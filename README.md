@@ -133,7 +133,7 @@ HUP257 118 × 463 s; 439 MB of EDF):
 × 320 s × 1024 Hz) is 300 MB as float32. About 0.03 CPU-seconds per channel-minute
 (emulated), so a 1 h, 128-channel recording at 1024 Hz takes ~2 min on 2 vCPU and ~0.6 GB for
 its window. Recordings of 256+ channels at 2 kHz fit in 4 GiB with the default window; lower
-`WINDOW_S` if they do not. The image is 199 MB compressed (829 MB unpacked).
+`WINDOW_S` if they do not. The image is ~200 MB compressed (~840 MB unpacked).
 
 ## Results on real data
 
