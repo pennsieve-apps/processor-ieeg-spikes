@@ -41,7 +41,7 @@ with band power, HFO rates, normative abnormality and labels (`soz`, `resected`)
 | `WINDOW_S` | `300` | Windows the recording is read and analysed in: all good channels at once, plus 10 s of context on each side (never across excluded time). Bounds memory: channels × (`WINDOW_S` + 20 s) × sampling rate × 4 bytes. |
 | `GROUP_EVENTS` | `true` | Group spikes of different channels into events (`spike_events.csv`, `event_id` in `spikes.csv`). |
 | `GROUP_WINDOW_MS` | `50` | An event takes every spike within this many ms of its first spike. |
-| `THREADS` | `0` | Channels analysed in parallel (processes); `0` = one per vCPU. |
+| `THREADS` | `0` | Channels analysed in parallel (processes); `0` = one per vCPU the container is given (cgroup CPU quota, else CPU affinity, else the CPU count), capped so that ~320 MB per worker plus ~850 MB for the main process fit the memory limit. The number chosen and why are logged and kept in `provenance.json`. |
 | `LABEL` | (empty) | When set, write to `OUTPUT_DIR/<LABEL>/` (a workflow running this step twice, e.g. once per detector). |
 
 ## Outputs
