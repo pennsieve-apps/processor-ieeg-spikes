@@ -162,6 +162,17 @@ consensus unequivocal electrographic onset (`ueo_consensus`) vs all other channe
 | HUP250 ictal209153 | 2 | 5.08 vs 0.00, **0.99** | 0.64 |
 | HUP257 ictal387681 | 5 | 6.61 vs 0.00, **0.98** | 0.92 |
 
+**ieeg-prep output** (`data/work/prep/ieeg` of workflow-epilepsy-ieeg: all 24 demo clips,
+bipolar montage, 72–204 good channels, labels from the expert consensus in `_channels.tsv`).
+Default run (whole recording, seizures and 10 s margins left out) in Docker (amd64 emulated,
+2 vCPU / 4 GiB): 24 recordings ok, 206 s CPU, 118 s wall, peak 1.84 GB. Spike rate in channels
+labelled `onset=true` vs the others, per recording:
+
+| Run | AUC, median (IQR) | AUC > 0.5 | median rate, onset vs other channels |
+|---|---|---|---|
+| default (whole recording minus seizures) | **0.88** (0.77–0.96) | 23 of 24 | 9.5 vs 1.8 /min |
+| `SEGMENT=baseline` (ieeg-prep's pre-ictal baseline, ≤ 90 s) | **0.89** (0.74–0.96) | 21 of 24 | 9.2 vs 0.7 /min |
+
 ## Running it locally
 
 ```sh
