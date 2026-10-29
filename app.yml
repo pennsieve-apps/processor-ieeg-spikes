@@ -1,0 +1,119 @@
+# yaml-language-server: $schema=https://schemas.pennsieve.io/app-manifest/v1.json
+schemaVersion: "1.0"
+application:
+  name: iEEG Spikes
+  description: >-
+    Detects interictal epileptiform discharges (spikes) on every good channel of intracranial
+    EEG (SEEG or ECoG) with the Janca et al. 2015 detector (or Barkmeier et al. 2012), from
+    epycom, and writes each spike, the spike rate per channel per minute analysed, and
+    cross-channel spike events with their leading channel. Known seizures can be left out.
+  type: processor
+  tags:
+    - ieeg
+    - seeg
+    - ecog
+    - electrophysiology
+    - epilepsy
+    - neuroscience
+    - spike-detection
+runtime:
+  # Channels in parallel (THREADS), one 5-minute window of all good channels at a time.
+  # 4 demo clips (1024 Hz, 106-230 channels, 24.6 min in all) peak at 1.7 GB including page
+  # cache and take ~80 s on 2 vCPU (amd64 emulated); see README "Runtime".
+  cpu: 2048
+  memory: 4096
+  computeTypes:
+    - standard
+  timeoutSeconds: 14400
+parameters:
+  - name: DETECTOR
+    type: string
+    label: Detector
+    description: >-
+      janca: Janca et al. 2015, envelope distribution modelling (recommended; validated on
+      intracranial EEG). barkmeier: Barkmeier et al. 2012, slope and amplitude thresholds.
+      Both run on the signal resampled to 200 Hz.
+    defaultValue: janca
+    validValues: [janca, barkmeier]
+  - name: JANCA_K1
+    type: number
+    label: Janca threshold k1
+    description: Janca's threshold factor k1 (higher = fewer, more obvious spikes). 3.65 is the published default.
+    defaultValue: 3.65
+    min: 1
+    max: 10
+  - name: SEGMENT
+    type: string
+    label: Part of the recording
+    description: >-
+      all: the whole recording. baseline: only the baseline interval of recordings.csv (or a
+      `baseline` event), e.g. the pre-ictal baseline of a seizure clip; recordings without one
+      are analysed whole (noted in provenance.json).
+    defaultValue: all
+    validValues: [all, baseline]
+  - name: EXCLUDE_SEIZURE
+    type: boolean
+    label: Leave seizures out
+    description: >-
+      Leave known seizures (recordings.csv onset_s, `seizure` events) out of the analysis, with
+      SEIZURE_MARGIN_S on both sides; a seizure without a known end is cut to the end of the
+      recording. Interictal spike rates should not count ictal discharges.
+    defaultValue: true
+  - name: SEIZURE_MARGIN_S
+    type: number
+    label: Seizure margin (s)
+    description: Seconds left out before the seizure onset and after its end.
+    defaultValue: 10
+    min: 0
+  - name: WINDOW_S
+    type: number
+    label: Window (s)
+    description: >-
+      Length of the windows the recording is read and analysed in (all good channels at
+      once; 10 s of context on each side). Janca's background statistics adapt within it.
+      Memory grows with channels × window × sampling rate.
+    defaultValue: 300
+    min: 60
+  - name: GROUP_EVENTS
+    type: boolean
+    label: Group spikes across channels
+    description: >-
+      Group spikes of different channels within GROUP_WINDOW_MS of an event's first spike into
+      one event (spike_events.csv, event_id in spikes.csv); the first channel is its leader.
+    defaultValue: true
+  - name: GROUP_WINDOW_MS
+    type: number
+    label: Grouping window (ms)
+    description: Spikes within this many milliseconds of an event's first spike belong to it.
+    defaultValue: 50
+    min: 1
+  - name: THREADS
+    type: integer
+    label: Parallel workers
+    description: Channels analysed in parallel; 0 = one per vCPU.
+    defaultValue: 0
+    min: 0
+  - name: LABEL
+    type: string
+    label: Output subfolder
+    description: When set, outputs are written to OUTPUT_DIR/<LABEL>/ (for a workflow that runs this step twice).
+    defaultValue: ""
+inputs:
+  - name: ieeg
+    description: >-
+      The BIDS-iEEG derivative of ieeg-prep (recordings.csv, *_desc-preproc_ieeg.edf with
+      channels.tsv and events.tsv), or any BIDS-iEEG dataset, or plain EDF/BDF/BrainVision/FIF/
+      EEGLAB files (all channels of an EEG/SEEG/ECoG type are analysed when there is no
+      channels.tsv). Folders and symlinks are followed.
+    placement: root
+    required: true
+outputs:
+  - name: spikes
+    description: >-
+      spikes.csv (recording_id, channel, time_s, amplitude_uv, detector, event_id),
+      spike_rates.csv (recording_id, channel, n_spikes, minutes, rate_per_min, detector),
+      spike_events.csv (recording_id, event_id, time_s, leader, n_channels, channels, detector)
+      and provenance.json.
+    mediaTypes:
+      - text/csv
+      - application/json

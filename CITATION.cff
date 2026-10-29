@@ -1,0 +1,269 @@
+cff-version: "1.2.0"
+message: If you use this app, please cite it and the works it builds on, listed under references.
+type: software
+title: iEEG Spikes
+abstract: 'Detects interictal epileptiform discharges on every good channel of intracranial EEG with the Janca et al. 2015 (or Barkmeier et al. 2012) detector from epycom and writes the spikes, spike rates per channel and cross-channel spike events, leaving known seizures out.'
+authors:
+- name: Pennsieve (University of Pennsylvania)
+repository-code: https://github.com/pennsieve-apps/processor-ieeg-spikes
+license: Apache-2.0
+keywords:
+- ieeg
+- seeg
+- ecog
+- electrophysiology
+- epilepsy
+- neuroscience
+- spike-detection
+references:
+- type: article
+  title: 'Detection of Interictal Epileptiform Discharges Using Signal Envelope Distribution Modelling: Application to Epileptic and Non-Epileptic Intracranial Recordings'
+  authors:
+  - family-names: Janca
+    given-names: Radek
+  - family-names: Jezdik
+    given-names: Petr
+  - family-names: Cmejla
+    given-names: Roman
+  - family-names: Tomasek
+    given-names: Martin
+  - family-names: Worrell
+    given-names: Gregory A.
+  - family-names: Stead
+    given-names: Matt
+  - family-names: Wagenaar
+    given-names: Joost
+  - family-names: Jefferys
+    given-names: John G. R.
+  - family-names: Krsek
+    given-names: Pavel
+  - family-names: Komarek
+    given-names: Vladimir
+  - family-names: Jiruska
+    given-names: Premysl
+  - family-names: Marusic
+    given-names: Petr
+  year: 2015
+  journal: Brain Topography
+  volume: 28
+  issue: '1'
+  start: '172'
+  end: '183'
+  doi: 10.1007/s10548-014-0379-1
+- type: article
+  title: High inter-reviewer variability of spike detection on intracranial EEG addressed by an automated multi-channel algorithm
+  authors:
+  - family-names: Barkmeier
+    given-names: Daniel T.
+  - family-names: Shah
+    given-names: Aashit K.
+  - family-names: Flanagan
+    given-names: Danny
+  - family-names: Atkinson
+    given-names: Marie D.
+  - family-names: Agarwal
+    given-names: Rajeev
+  - family-names: Fuerst
+    given-names: Darren R.
+  - family-names: Jafari-Khouzani
+    given-names: Kourosh
+  - family-names: Loeb
+    given-names: Jeffrey A.
+  year: 2012
+  journal: Clinical Neurophysiology
+  volume: 123
+  issue: '6'
+  start: '1088'
+  end: '1095'
+  doi: 10.1016/j.clinph.2011.09.023
+- type: article
+  title: MEG and EEG data analysis with MNE-Python
+  authors:
+  - family-names: Gramfort
+    given-names: Alexandre
+  - family-names: Luessi
+    given-names: Martin
+  - family-names: Larson
+    given-names: Eric
+  - family-names: Engemann
+    given-names: Denis A.
+  - family-names: Strohmeier
+    given-names: Daniel
+  - family-names: Brodbeck
+    given-names: Christian
+  - family-names: Goj
+    given-names: Roman
+  - family-names: Jas
+    given-names: Mainak
+  - family-names: Brooks
+    given-names: Teon
+  - family-names: Parkkonen
+    given-names: Lauri
+  - family-names: Hämäläinen
+    given-names: Matti
+  year: 2013
+  journal: Frontiers in Neuroscience
+  volume: 7
+  start: '267'
+  doi: 10.3389/fnins.2013.00267
+- type: article
+  title: 'iEEG-BIDS, extending the Brain Imaging Data Structure specification to human intracranial electrophysiology'
+  authors:
+  - family-names: Holdgraf
+    given-names: Christopher
+  - family-names: Appelhoff
+    given-names: Stefan
+  - family-names: Bickel
+    given-names: Stephan
+  - family-names: Bouchard
+    given-names: Kristofer
+  - family-names: D’Ambrosio
+    given-names: Sasha
+  - family-names: David
+    given-names: Olivier
+  - family-names: Devinsky
+    given-names: Orrin
+  - family-names: Dichter
+    given-names: Benjamin
+  - family-names: Flinker
+    given-names: Adeen
+  - family-names: Foster
+    given-names: Brett L.
+  - family-names: Gorgolewski
+    given-names: Krzysztof J.
+  - family-names: Groen
+    given-names: Iris
+  - family-names: Groppe
+    given-names: David
+  - family-names: Gunduz
+    given-names: Aysegul
+  - family-names: Hamilton
+    given-names: Liberty
+  - family-names: Honey
+    given-names: Christopher J.
+  - family-names: Jas
+    given-names: Mainak
+  - family-names: Knight
+    given-names: Robert
+  - family-names: Lachaux
+    given-names: Jean-Philippe
+  - family-names: Lau
+    given-names: Jonathan C.
+  - family-names: Lee-Messer
+    given-names: Christopher
+  - family-names: Lundstrom
+    given-names: Brian N.
+  - family-names: Miller
+    given-names: Kai J.
+  - family-names: Ojemann
+    given-names: Jeffrey G.
+  - family-names: Oostenveld
+    given-names: Robert
+  - family-names: Petridou
+    given-names: Natalia
+  - family-names: Piantoni
+    given-names: Gio
+  - family-names: Pigorini
+    given-names: Andrea
+  - family-names: Pouratian
+    given-names: Nader
+  - family-names: Ramsey
+    given-names: Nick F.
+  - family-names: Stolk
+    given-names: Arjen
+  - family-names: Swann
+    given-names: Nicole C.
+  - family-names: Tadel
+    given-names: François
+  - family-names: Voytek
+    given-names: Bradley
+  - family-names: Wandell
+    given-names: Brian A.
+  - family-names: Winawer
+    given-names: Jonathan
+  - family-names: Whitaker
+    given-names: Kirstie
+  - family-names: Zehl
+    given-names: Lyuba
+  - family-names: Hermes
+    given-names: Dora
+  year: 2019
+  journal: Scientific Data
+  volume: 6
+  issue: '1'
+  start: '102'
+  doi: 10.1038/s41597-019-0105-7
+- type: article
+  title: Normative intracranial EEG maps epileptogenic tissues in focal epilepsy
+  authors:
+  - family-names: Bernabei
+    given-names: John M
+  - family-names: Sinha
+    given-names: Nishant
+  - family-names: Arnold
+    given-names: T Campbell
+  - family-names: Conrad
+    given-names: Erin
+  - family-names: Ong
+    given-names: Ian
+  - family-names: Pattnaik
+    given-names: Akash R
+  - family-names: Stein
+    given-names: Joel M
+  - family-names: Shinohara
+    given-names: Russell T
+  - family-names: Lucas
+    given-names: Timothy H
+  - family-names: Bassett
+    given-names: Dani S
+  - family-names: Davis
+    given-names: Kathryn A
+  - family-names: Litt
+    given-names: Brian
+  year: 2022
+  journal: Brain
+  volume: 145
+  issue: '6'
+  start: '1949'
+  end: '1961'
+  doi: 10.1093/brain/awab480
+- type: software
+  title: 'epycom: ElectroPhYsiology COmputational Module'
+  authors:
+  - name: International Clinical Research Center, St. Anne's University Hospital Brno (FNUSA-ICRC), Biomedical Engineering
+  version: '0.3'
+  repository-code: https://github.com/ICRC-BME/epycom
+  url: https://pypi.org/project/epycom/0.3/
+  license: Apache-2.0
+- type: data
+  title: HUP Interictal iEEG Atlas
+  authors:
+  - family-names: Bernabei
+    given-names: John
+  - family-names: Litt
+    given-names: Brian
+  year: 2021
+  publisher:
+    name: Pennsieve Discover
+  doi: 10.26275/lzhy-ox20
+  license: ODC-By-1.0
+- type: data
+  title: Multi-Expert Seizure Annotation
+  authors:
+  - family-names: Ojemann
+    given-names: William K
+  - family-names: Zhou
+    given-names: Daniel
+  - family-names: Armstrong
+    given-names: Caren
+  - family-names: Sinha
+    given-names: Nishant
+  - family-names: Litt
+    given-names: Brian
+  - family-names: Conrad
+    given-names: Erin
+  year: 2026
+  publisher:
+    name: Pennsieve Discover
+  doi: 10.26275/dely-fzwx
+  license: CC-BY-4.0
