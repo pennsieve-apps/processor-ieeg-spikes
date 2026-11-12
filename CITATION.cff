@@ -1,5 +1,6 @@
 cff-version: "1.2.0"
-message: If you use this app, please cite it and the works it builds on, listed under references.
+message: >-
+  If you use this app, please cite the work it implements (preferred-citation), this release, and Pennsieve (RRID:SCR_021677); the other works it builds on are listed under references.
 type: software
 title: iEEG Spikes
 abstract: 'Detects interictal epileptiform discharges on every good channel of intracranial EEG with the Janca et al. 2015 (or Barkmeier et al. 2012) detector from epycom and writes the spikes, spike rates per channel and cross-channel spike events, leaving known seizures out.'
@@ -15,6 +16,43 @@ keywords:
 - epilepsy
 - neuroscience
 - spike-detection
+# The work this app implements; the release report's "How to cite" puts it first.
+preferred-citation:
+  type: article
+  title: 'Detection of Interictal Epileptiform Discharges Using Signal Envelope Distribution Modelling: Application to Epileptic
+    and Non-Epileptic Intracranial Recordings'
+  authors:
+  - family-names: Janca
+    given-names: Radek
+  - family-names: Jezdik
+    given-names: Petr
+  - family-names: Cmejla
+    given-names: Roman
+  - family-names: Tomasek
+    given-names: Martin
+  - family-names: Worrell
+    given-names: Gregory A.
+  - family-names: Stead
+    given-names: Matt
+  - family-names: Wagenaar
+    given-names: Joost
+  - family-names: Jefferys
+    given-names: John G. R.
+  - family-names: Krsek
+    given-names: Pavel
+  - family-names: Komarek
+    given-names: Vladimir
+  - family-names: Jiruska
+    given-names: Premysl
+  - family-names: Marusic
+    given-names: Petr
+  year: 2015
+  journal: Brain Topography
+  volume: 28
+  issue: '1'
+  start: '172'
+  end: '183'
+  doi: 10.1007/s10548-014-0379-1
 references:
 - type: article
   title: 'Detection of Interictal Epileptiform Discharges Using Signal Envelope Distribution Modelling: Application to Epileptic and Non-Epileptic Intracranial Recordings'
